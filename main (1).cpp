@@ -8,6 +8,7 @@ using namespace std;
 struct Tarea {
     string descripcion;
     bool completada;
+    string prioridad;
 };
 
 // Prototipos
@@ -66,6 +67,9 @@ void agregarTarea(vector<Tarea>& tareas) {
         return;
     }
     
+    cout << "Ingrese prioridad:";
+    getline(cin, nueva.prioridad);
+    
     nueva.completada = false;
     
     tareas.push_back(nueva);
@@ -77,7 +81,7 @@ void mostrarTareas(const vector<Tarea>& tareas) {
  cout << "\nTAREAS\n\n";
  
     for (int i=0; i <tareas.size(); i++){
-        // Numero. [estado] descripcion
+        // Numero. [estado] [prioridad] descripcion
         cout << i+1 << ".";
         
         if (tareas[i].completada==true){
@@ -85,7 +89,7 @@ void mostrarTareas(const vector<Tarea>& tareas) {
         } else {
             cout << "[Pendiente]";
         }
-        
+        cout << "[" <<tareas[i].prioridad<< "] ";
         cout <<tareas[i].descripcion << endl;
      }
          
